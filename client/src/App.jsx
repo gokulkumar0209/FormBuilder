@@ -1,16 +1,19 @@
 import { useState } from "react";
 import DashBoard from "./DashBoard";
-import { firestore } from "./firebase"; // Import firestore from firebase.js
-import { addDoc, collection } from "firebase/firestore";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Create from "./Create";
 
 function App() {
 	const [count, setCount] = useState(0);
 
 	return (
 		<>
-			<div className="bg-green-400">
-				<DashBoard />
-			</div>
+			<BrowserRouter>
+				<Routes>
+					<Route element={<DashBoard />} path="/"></Route>
+					<Route element={<Create />} path="/create/:title"></Route>
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }

@@ -1,33 +1,24 @@
 import React, { useState } from "react";
-import { getFirestore, addDoc, collection } from "firebase/firestore";
-import "./firebase"; // Ensure this file correctly initializes Firebase
+
+import NewForm from "./NewForm";
 
 function DashBoard() {
-	const db = getFirestore();
-	const [title, setTitle] = useState("");
-
-	const handleCreation = async () => {
-		try {
-			await addDoc(collection(db, "allForms"), { title: title });
-			alert("Form Created");
-		} catch (error) {
-			alert("Error creating form: " + error.message);
-		}
-	};
+	const [createView, setCreateView] = useState(false);
 
 	return (
-		<div>
+		<div className=" bg-slate-500">
 			<div className="bg-red-500 w-20 h-20">
-				<input
-					type="text"
-					className="bg-green-200"
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
-				/>
-				<button className="bg-blue-100" onClick={handleCreation}>
+				<button className="bg-blue-100" onClick={() => setCreateView(true)}>
 					Add
 				</button>
 			</div>
+			{createView && (
+				<div
+					className={`fixed inset-0 flex items-center justify-center bg-slate-500 bg-opacity-50 `}
+				>
+					<NewForm setCreateView={setCreateView} />
+				</div>
+			)}
 		</div>
 	);
 }
