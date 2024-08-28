@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
 	getFirestore,
 	doc,
@@ -10,6 +10,7 @@ import {
 import AllFields from "./AllFields";
 
 function Create() {
+	const navigate = useNavigate();
 	const { id, title } = useParams();
 	const [fields, setFields] = useState([]);
 	const db = getFirestore();
@@ -32,7 +33,7 @@ function Create() {
 			}
 		};
 		fetchFields();
-	}, [title, db]);
+	}, []);
 
 	const createComponent = (field, index) => {
 		switch (field.type) {
@@ -92,7 +93,7 @@ function Create() {
 		<div>
 			<form action="" onSubmit={handlePublish}>
 				<div className="bg-white p-2 flex justify-between">
-					<h2>User Feedback</h2>
+					<h2 onClick={() => navigate("/")}>User Feedback</h2>
 					<div>
 						<button
 							type="submit"

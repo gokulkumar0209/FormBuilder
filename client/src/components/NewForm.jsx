@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {} from "react";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
-import "./firebase"; // Ensure this file correctly initializes Firebase
+import "../firebase";
 import { useNavigate } from "react-router-dom";
 function NewForm({ setCreateView }) {
 	const db = getFirestore();
@@ -9,8 +9,17 @@ function NewForm({ setCreateView }) {
 	const [title, setTitle] = useState("");
 
 	const handleCreation = async () => {
+		const date = new Date();
+		const formattedDate = date.toLocaleDateString("en-GB", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+		});
 		try {
-			const docRef = await addDoc(collection(db, "allForms"), { title: title });
+			const docRef = await addDoc(collection(db, "allForms"), {
+				title: title,
+				date: formattedDate,
+			});
 			const docId = docRef.id;
 			navigate(`/${docId}/${title}`);
 		} catch (error) {

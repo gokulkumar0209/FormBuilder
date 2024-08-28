@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Card({ form }) {
+	const navigate = useNavigate();
 	return (
 		<div className=" bg-white rounded-md">
 			<div className=" flex justify-center p-1 text-xl bg-yellow-300">
@@ -18,7 +20,7 @@ function Card({ form }) {
 				</div>
 				<div className="flex justify-between">
 					<div>Date Published</div>
-					<div>Hello</div>
+					<div>{form.date}</div>
 				</div>
 				<div className=" flex justify-center">
 					<button className=" p-1 px-2 bg-violet-500 rounded-md text-white w-3/4">
@@ -27,7 +29,10 @@ function Card({ form }) {
 				</div>
 				<div className=" flex justify-center w-full mt-2">
 					<div className=" flex justify-between  w-3/4">
-						<button className=" p-1 px-4 bg-green-500 rounded-md text-white">
+						<button
+							className=" p-1 px-4 bg-green-500 rounded-md text-white"
+							onClick={() => navigate(`/${form.id}/${form.title}`)}
+						>
 							Edit
 						</button>
 						<button className=" p-1 px-4  bg-blue-500 rounded-md text-white">

@@ -1,11 +1,9 @@
 import { useState } from "react";
-import DashBoard from "./DashBoard";
+import DashBoard from "./components/DashBoard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Create from "./Create";
+import Create from "./components/Create";
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<>
 			<BrowserRouter>

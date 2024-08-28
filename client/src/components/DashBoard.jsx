@@ -17,7 +17,6 @@ function DashBoard() {
 					...doc.data(),
 				}));
 				setForms(formsList);
-				console.log(formsList);
 			} catch (error) {
 				alert("Error fetching forms: " + error.message);
 			}

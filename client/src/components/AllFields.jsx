@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TextInput from "./fields/TextInput";
-import NumericRatingInput from "./fields/NumericRatingInput";
-import StarRatingInput from "./fields/StarRatingInput";
-import RadioButtonInput from "./fields/RadioButtonInput";
+import TextInput from "../fields/TextInput";
+import NumericRatingInput from "../fields/NumericRatingInput";
+import StarRatingInput from "../fields/StarRatingInput";
+import RadioButtonInput from "../fields/RadioButtonInput";
 
 function AllFields({ fields, setFields }) {
 	const [hide, setHide] = useState(true);
