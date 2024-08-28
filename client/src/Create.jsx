@@ -1,13 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {
+	getFirestore,
+	doc,
+	getDoc,
+	updateDoc,
+	arrayUnion,
+	setDoc,
+} from "firebase/firestore";
 import AllFields from "./AllFields";
 import { Button } from "@mui/material";
 
 function Create() {
 	const { title } = useParams();
 	const [fields, setFields] = useState([]);
+	const db = getFirestore();
+	useEffect(() => {
+		const fetchFields = async () => {
+			try {
+				const formRef = doc(db, "allForms", title);
+				const formDoc = await getDoc(formRef);
+				if (formDoc.exists()) {
+					setFields(formDoc.data().fields);
+				} else {
+					alert("Error in fetching the Document");
+				}
+			} catch (error) {
+				alert(error);
+			}
+		};
+		fetchFields();
+	}, []);
 	const createComponent = (field, index) => {
-		console.log(field);
 		switch (field.type) {
 			case "text":
 				return (
@@ -34,13 +58,39 @@ function Create() {
 				return null;
 		}
 	};
-	
+	const handlePublish = async (e) => {
+		e.preventDefault();
+		const formRef = doc(db, "allForms", title);
+
+		try {
+		
+			const docSnapshot = await getDoc(formRef);
+
+			if (docSnapshot.exists()) {
+				
+				await updateDoc(formRef, {
+					fields: arrayUnion(...fields), 
+				});
+			} else {
+				
+				await setDoc(formRef, {
+					fields: fields,
+				});
+			}
+
+			console.log("Form published successfully");
+		} catch (error) {
+			console.error("Error publishing form: ", error);
+		}
+	};
 	return (
 		<div>
-			<form action=""  >
+			<form action="" onSubmit={handlePublish}>
 				<div className=" bg-white p-2   flex justify-between">
 					<h2 className=" ">User Feeedback</h2>
-					<div><button type="submit">Publish</button></div>
+					<div>
+						<button type="submit">Publish</button>
+					</div>
 				</div>
 
 				<div className=" flex justify-between bg-yellow-300 h-screen">
