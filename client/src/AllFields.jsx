@@ -1,8 +1,8 @@
 import React from "react";
 
 function AllFields({ fields, setFields }) {
-	console.log(fields);
 	const addField = (type) => {
+		console.log(fields);
 		setFields((prevFields) => [...prevFields, { id: Date.now(), type }]);
 	};
 	return (
