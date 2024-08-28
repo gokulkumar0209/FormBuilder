@@ -6,9 +6,9 @@ import Card from "./Card";
 function DashBoard() {
 	const [createView, setCreateView] = useState(false);
 	const [forms, setForms] = useState([]);
-	const db = getFirestore();
 
 	useEffect(() => {
+		const db = getFirestore();
 		const fetchForms = async () => {
 			try {
 				const querySnapshot = await getDocs(collection(db, "allForms"));
@@ -23,7 +23,7 @@ function DashBoard() {
 		};
 
 		fetchForms();
-	}, [db]);
+	}, []);
 
 	return (
 		<div className=" bg-gray-200">

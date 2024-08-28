@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DashBoard from "./components/DashBoard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Create from "./components/Create";
+import Create from "./components/CreateFields";
 
 function App() {
 	return (

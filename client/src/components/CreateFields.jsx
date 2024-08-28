@@ -9,13 +9,13 @@ import {
 } from "firebase/firestore";
 import AllFields from "./AllFields";
 
-function Create() {
+function CreateFields() {
 	const navigate = useNavigate();
 	const { id, title } = useParams();
 	const [fields, setFields] = useState([]);
-	const db = getFirestore();
 
 	useEffect(() => {
+		const db = getFirestore();
 		const fetchFields = async () => {
 			try {
 				const formRef = doc(db, "allForms", id);
@@ -64,6 +64,7 @@ function Create() {
 	};
 
 	const handlePublish = async (e) => {
+		const db = getFirestore();
 		e.preventDefault();
 		const formRef = doc(db, "allForms", id);
 
@@ -122,4 +123,4 @@ function Create() {
 	);
 }
 
-export default Create;
+export default CreateFields;

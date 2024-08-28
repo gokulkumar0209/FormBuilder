@@ -4,11 +4,11 @@ import { getFirestore, addDoc, collection } from "firebase/firestore";
 import "../firebase";
 import { useNavigate } from "react-router-dom";
 function NewForm({ setCreateView }) {
-	const db = getFirestore();
 	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 
 	const handleCreation = async () => {
+		const db = getFirestore();
 		const date = new Date();
 		const formattedDate = date.toLocaleDateString("en-GB", {
 			day: "2-digit",
