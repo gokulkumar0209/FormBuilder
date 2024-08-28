@@ -80,36 +80,44 @@ function CreateFields() {
 					fields: fields,
 				});
 			}
-
-			console.log("Form published successfully");
+			alert("Form Published");
 		} catch (error) {
-			console.error(
-				"Error publishing form: ",
-				error.message || "An error occurred while publishing the form."
+			alert.error(
+				`Error publishing form: ${
+					error.message || "An error occurred while publishing the form."
+				}`
 			);
 		}
 	};
 
 	return (
-		<div>
-			<form action="" onSubmit={handlePublish}>
-				<div className="bg-white p-2 flex justify-between">
-					<h2 onClick={() => navigate("/")}>User Feedback</h2>
+		<div className=" h-screen">
+			<form className=" h-full" action="" onSubmit={handlePublish}>
+				<div className="bg-white p-2 flex justify-between border-b-4 border-gray-400">
+					<h2
+						className=" bg-gray-100 rounded-lg hover:cursor-pointer p-2"
+						onClick={() => navigate("/")}
+					>
+						User Feedback
+					</h2>
 					<div>
+						<button className=" bg-blue-500 text-white p-2 rounded mx-4">
+							Save
+						</button>
 						<button
 							type="submit"
-							className="bg-blue-500 text-white p-2 rounded"
+							className="bg-green-600 text-white p-2 rounded mx-4"
 						>
 							Publish
 						</button>
 					</div>
 				</div>
 
-				<div className="flex justify-between bg-yellow-300 h-screen">
-					<div className="w-[75%] flex justify-center items-center">
-						<div className="bg-red-400 w-[40%] h-[90%]">
-							<h2 className="bg-blue-500 text-white p-1">{title}</h2>
-							<div className="bg-gray-300">
+				<div className="flex justify-between bg-gray-200 h-full">
+					<div className="w-[75%] flex justify-center items-center ">
+						<div className=" bg-gray-100 w-[40%] h-[90%] ">
+							<h2 className="bg-blue-500 text-white p-2 font-bold">{title}</h2>
+							<div className=" p-2 bg-gray-100">
 								{fields.map((field, index) => createComponent(field, index))}
 							</div>
 						</div>

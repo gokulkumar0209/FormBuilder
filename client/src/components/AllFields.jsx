@@ -75,13 +75,13 @@ function AllFields({ fields, setFields }) {
 	};
 
 	return (
-		<div className="h-full w-full bg-white p-4 grid gap-4">
+		<div className="h-full w-full bg-white p-4 grid ">
 			<h2 className="font-bold text-xl">All Fields</h2>
 			<div>
 				{hide ? (
-					<div className="space-y-2 grid">
+					<div className=" space-y-2 grid">
 						<button
-							className="p-2 bg-blue-500 text-white rounded"
+							className="p-2 bg-gray-200  rounded"
 							onClick={() => {
 								setHide(false);
 								setCurrentFieldType("text");

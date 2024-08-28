@@ -27,7 +27,7 @@ function DashBoard() {
 
 	return (
 		<div className=" bg-gray-200">
-			<div className=" bg-white">
+			<div className=" bg-white p-2">
 				<h2>User Feedback</h2>
 			</div>
 			<div className=" p-4">
