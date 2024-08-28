@@ -10,9 +10,9 @@ function NewForm({ setCreateView }) {
 
 	const handleCreation = async () => {
 		try {
-			await addDoc(collection(db, "allForms"), { title: title });
-			alert("Form Created");
-			navigate(`/create/${title}`);
+			const docRef = await addDoc(collection(db, "allForms"), { title: title });
+			const docId = docRef.id;
+			navigate(`/${docId}/${title}`);
 		} catch (error) {
 			alert("Error creating form: " + error.message);
 		}

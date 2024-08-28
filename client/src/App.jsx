@@ -11,7 +11,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route element={<DashBoard />} path="/"></Route>
-					<Route element={<Create />} path="/create/:title"></Route>
+					<Route element={<Create />} path="/:id/:title"></Route>
 				</Routes>
 			</BrowserRouter>
 		</>
