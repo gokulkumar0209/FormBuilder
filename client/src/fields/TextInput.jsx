@@ -51,6 +51,7 @@ function TextInput({
 			>
 				Save
 			</button>
+			<button className="ml-2 p-2 bg-red-700 text-white rounded" onClick={() => setHide(true)}>Cancel</button>
 		</div>
 	);
 }

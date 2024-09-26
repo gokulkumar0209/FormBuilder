@@ -118,7 +118,9 @@ function AllFields({ fields, setFields }) {
 						</button>
 					</div>
 				) : (
-					<div className="h-screen">{renderFieldComponent()}</div>
+					<div>
+						<div className="h-screen">{renderFieldComponent()}</div>
+					</div>
 				)}
 			</div>
 		</div>
